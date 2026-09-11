@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eight Hours</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="countdown">
+    <div class="chat">
+      <p>
+        just a reminder of how many days and hours of life are left until
+        someone my age reaches life expectancy
+      </p>
+      <p>
+        these numbers carry so much weight and significance that they are eating me up from the inside like a time bomb
+      </p>
+      <p>some simple maths of existence</p>
+      
+
+    </div>
+    <div class="clock">
+      <div class="days">
+        <h2>0</h2>
+        days
+      </div>
+      <div class="hours">
+        <h2>0</h2>
+        hours
+      </div>
+      <div class="minutes">
+        <h2>0</h2>
+        minutes
+      </div>
+      <div class="seconds">
+        <h2>0</h2>
+        seconds
+      </div>
+    </div>
+
+    <footer>
+      <a href="postits.html" class="button">back</a>
+      <a href="countdown.html" class="button">what you will?</a>
+    </footer>
+
+    <script src="typewritter.js"></script>
+    <script>
+      const targetDate = new Date();
+      targetDate.setFullYear(targetDate.getFullYear() + 43);
+
+      const daysElement = document.querySelector(".days h2");
+      const hoursElement = document.querySelector(".hours h2");
+      const minutesElement = document.querySelector(".minutes h2");
+      const secondsElement = document.querySelector(".seconds h2");
+
+      function updateCountdown() {
+        const now = new Date();
+        let remainingMs = targetDate - now;
+
+        if (remainingMs <= 0) {
+          remainingMs = 0;
+        }
+
+        const totalSeconds = Math.floor(remainingMs / 1000);
+        const totalMinutes = Math.floor(totalSeconds / 60);
+        const totalHours = Math.floor(totalSeconds / (60 * 60));
+        const totalDays = Math.floor(totalSeconds / (24 * 60 * 60));
+
+        daysElement.textContent = totalDays.toLocaleString();
+        hoursElement.textContent = totalHours.toLocaleString();
+        minutesElement.textContent = totalMinutes.toLocaleString();
+        secondsElement.textContent = totalSeconds.toLocaleString();
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    </script>
+  </body>
+</html>

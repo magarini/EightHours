@@ -35,6 +35,11 @@ body {
   background-size: cover;
 }
 
+.countdown {
+  background: url("imgs/counterBG.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
 .chat {
   display: flex;
   flex-direction: column;
@@ -210,6 +215,32 @@ footer {
   justify-content: center;
 }
 
+.clock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 24px;
+  font-size: 2rem;
+  padding: 24px 24px 80px;
+  position:absolute;
+  width: 100%;
+  height: 100%;
+}
+
+
+.clock h2{
+  font-size: 6rem;
+  margin: 0;
+}
+
+.days, .hours, .minutes, .seconds {
+display:flex;
+flex-direction: column;
+align-items: center;
+gap:8px;
+}
+
 @media (max-width: 768px) {
   .hidden-board-msg {
     font-size: 2rem;
@@ -223,4 +254,16 @@ footer {
   footer {
     margin: 8px;
   }
+  .clock{
+    position:relative;
+  }
+
+  .clock h2{
+    font-size: 3rem;
+  }
+  
+  .days, .hours, .minutes, .seconds {
+    font-size: 1.2rem;
+  }
+
 }
