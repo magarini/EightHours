@@ -1,0 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=Lacquer&display=swap");
+
+:root {
+  --text-color: #333;
+  --bubble-color: #e4dae2;
+  --button-color: #4caf50;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--text-color);
+  font-family: "Lacquer", cursive;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.intro {
+  background: url("imgs/deluluBiz.jpg") no-repeat center center fixed;
+}
+
+.rest {
+  background: url("imgs/restCreatures.jpg") no-repeat center bottom fixed;
+  background-size: cover;
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  margin: 24px;
+  gap: 8px;
+  max-width: 600px;
+  z-index: 10;
+}
+
+h1 {
+  font-size: 5rem;
+  margin: 0;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+p {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+p.strong {
+  font-size: 2rem;
+}
+
+.chat h1,
+.chat h2,
+.chat p {
+  max-width: 100%;
+  word-wrap: break-word;
+
+  color: var(--text-color);
+  background-color: var(--bubble-color);
+  padding: 12px 16px;
+  border-radius: 10px;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+.chat p {
+  /* font-family: "Courier New", monospace; */
+  overflow-wrap: break-word;
+  min-height: 1.8em;
+  opacity: 0;
+}
+
+.chat p.visible {
+  opacity: 1;
+}
+
+.chat p.is-typing::after {
+  content: "";
+  display: inline-block;
+  width: 0.12em;
+  height: 1em;
+  background-color: currentColor;
+  vertical-align: text-bottom;
+  margin-left: 0.08em;
+  animation: blink-caret 0.8s steps(1, end) infinite;
+}
+
+@keyframes blink-caret {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.01%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.button {
+  background-color: var(--button-color);
+  color: var(--text-color);
+  font-size: 1.5rem;
+  text-decoration: none;
+  padding: 12px 16px;
+  border-radius: 10px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 24px;
+}
+
+.wheel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.wheel img {
+  height: 90%;
+  width: auto;
+  animation: slow-rotate 20s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes slow-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.app-shell {
+  min-height: 40vh;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.board {
+  width: 100%;
+
+  flex: 2;
+}
+
+.app-header {
+  display: none;
+  /* align-items: end;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  max-width: 1240px;
+  padding: 24px;
+  position: relative;
+  z-index: 2; */
+}
+
+.notes {
+  min-height: 40vh;
+}
+
+.hidden-board-msg {
+  font-size: 5rem;
+
+  text-align: center;
+  margin-top: 10px;
+  z-index: 0;
+  max-width: 800px;
+}
+
+.msg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
