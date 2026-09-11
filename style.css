@@ -330,4 +330,13 @@ main {
   .seconds {
     font-size: 1.2rem;
   }
+
+
+    #planButton {
+      position: relative;
+      bottom: auto;
+      right: auto;
+      transform: none;
+    }
+
 }
