@@ -8,31 +8,19 @@ const TASKS = [
   "Book the appointment",
   "Water the plants",
   "Send that message",
-  "Take a proper break",
-
-  "find things I'm passionate about",
-  "escape 9-5",
-  "be realistic",
-  "hope",
-  "write more",
-  "freelancing dream",
-  "meet new people",
-  "play more",
-  "do your artistic projects",
-  "Take a proper break",
 ];
 
 const THOUGHTS = [
   "I try to optimize it as possible.",
-  "I try to optimize it as possible.",
-
   "I suffer from productivity stress after work hours.",
   "I am trying to control my energy",
   "where I spend it, how I proceed forward",
   "towards the vague direction of living a more creative life.",
   "What does it really mean to have eight hours for the things you want to do?",
-  "How many of those hours do you need simply to sustain yourself—to cook, eat, wash, and clean?",
-  "To get from one place to another, to pause for a moment, or to do absolutely nothing?",
+  "How many of those hours do you need simply to sustain yourself",
+  "to cook, eat, wash, and clean?",
+  "To get from one place to another, to pause for a moment",
+  "or to do absolutely nothing?",
 ];
 
 const INTERACTIONS_TO_CLEAN = 3;
