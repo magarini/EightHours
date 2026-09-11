@@ -30,6 +30,9 @@ const THOUGHTS = [
   "I am trying to control my energy",
   "where I spend it, how I proceed forward",
   "towards the vague direction of living a more creative life.",
+  "What does it really mean to have eight hours for the things you want to do?",
+  "How many of those hours do you need simply to sustain yourself—to cook, eat, wash, and clean?",
+  "To get from one place to another, to pause for a moment, or to do absolutely nothing?",
 ];
 
 const INTERACTIONS_TO_CLEAN = 3;

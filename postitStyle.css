@@ -156,7 +156,7 @@ h1 em {
 } */
 
 .notes {
-  height: 70vh;
+  /* height: 70vh; */
   min-height: 410px;
   margin: 0 auto;
   /* max-width: 1072px; */
