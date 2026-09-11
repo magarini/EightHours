@@ -11,6 +11,8 @@
 }
 
 body {
+  background: url("whitePaper.webp") no-repeat center center fixed;
+  background-size: cover;
   color: var(--text-color);
   font-family: "Lacquer", cursive;
   margin: 0;
@@ -28,6 +30,7 @@ body {
 
 .rest {
   background: url("imgs/restCreatures.jpg") no-repeat center bottom fixed;
+  background-size: cover;
 }
 
 .calendarPie {
@@ -114,13 +117,26 @@ p.strong {
   }
 }
 
-.button {
+.button,
+button {
   background-color: var(--button-color);
   color: var(--text-color);
   font-size: 1.5rem;
   text-decoration: none;
   padding: 12px 16px;
   border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  font-family: "Lacquer", cursive;
+}
+
+#planButton {
+  position: absolute;
+  bottom: 50%;
+  right: 50%;
+  transform: translate(50%, 50%);
+  align-self: center;
+  z-index: 10;
 }
 
 footer {
@@ -223,23 +239,68 @@ footer {
   gap: 24px;
   font-size: 2rem;
   padding: 24px 24px 80px;
-  position:absolute;
+  position: absolute;
   width: 100%;
   height: 100%;
   z-index: -1;
 }
 
-
-.clock h2{
+.clock h2 {
   font-size: 6rem;
   margin: 0;
 }
 
-.days, .hours, .minutes, .seconds {
-display:flex;
-flex-direction: column;
-align-items: center;
-gap:8px;
+.days,
+.hours,
+.minutes,
+.seconds {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+#sketch-holder {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  mix-blend-mode: multiply;
+}
+canvas {
+  width: 100%;
+
+  display: block;
+  mix-blend-mode: multiply;
+}
+
+/* button {
+  background: var(--coral);
+  border: 0;
+  color: var(--ink);
+  cursor: pointer;
+  font:
+    500 16px "Outfit",
+    sans-serif;
+  margin-left: 25px;
+  padding: 11px 15px;
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+} */
+
+main {
+  padding: 24px clamp(22px, 6vw, 84px);
+  display: flex;
+  flex-direction: column;
+  /* height: 100vh; */
+  box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
@@ -255,16 +316,18 @@ gap:8px;
   footer {
     margin: 8px;
   }
-  .clock{
-    position:relative;
+  .clock {
+    position: relative;
   }
 
-  .clock h2{
+  .clock h2 {
     font-size: 3rem;
   }
-  
-  .days, .hours, .minutes, .seconds {
+
+  .days,
+  .hours,
+  .minutes,
+  .seconds {
     font-size: 1.2rem;
   }
-
 }
