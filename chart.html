@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Draggable Doughnut Chart</title>
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: sans-serif;
+      background: #f2eee8;
+      color: #222;
+    }
+
+    .chart-wrapper {
+      text-align: center;
+    }
+
+    svg {
+      width: min(80vw, 420px);
+      display: block;
+      cursor: grab;
+      touch-action: none;
+      user-select: none;
+    }
+
+    svg.dragging {
+      cursor: grabbing;
+    }
+
+    .slice {
+      stroke: #f2eee8;
+      stroke-width: 2;
+    }
+
+    .marker {
+      fill: #222;
+    }
+
+    .center {
+      pointer-events: none;
+    }
+
+    #info {
+      margin-top: 1rem;
+      min-height: 3rem;
+    }
+
+    #info strong {
+      display: block;
+      font-size: 1.2rem;
+    }
+
+    #info span {
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="chart-wrapper">
+    <svg id="chart" viewBox="0 0 400 400" aria-labelledby="chart-title">
+      <title id="chart-title">Interactive doughnut chart</title>
+
+      <!-- The doughnut will be inserted here -->
+      <g id="doughnut"></g>
+
+      <!-- Center hole -->
+      <circle
+        class="center"
+        cx="200"
+        cy="200"
+        r="82"
+        fill="#f2eee8"
+      />
+
+      <!-- Fixed position marker -->
+      <path
+        class="marker"
+        d="M 200 18 L 190 2 L 210 2 Z"
+        aria-hidden="true"
+      />
+    </svg>
+
+    <div id="info" aria-live="polite"></div>
+  </main>
+
+  <script>
+    const data = [
+      { label: "Research", value: 30, color: "#e76f51" },
+      { label: "Design", value: 25, color: "#f4a261" },
+      { label: "Development", value: 20, color: "#2a9d8f" },
+      { label: "Meetings", value: 15, color: "#457b9d" },
+      { label: "Other", value: 10, color: "#8d99ae" }
+    ];
+
+    const svg = document.querySelector("#chart");
+    const doughnut = document.querySelector("#doughnut");
+    const info = document.querySelector("#info");
+
+    const center = 200;
+    const radius = 145;
+    const holeRadius = 82;
+
+    let rotation = 0;
+    let startPointerAngle = 0;
+    let startRotation = 0;
+
+    function polarToCartesian(angle, radius) {
+      const radians = (angle - 90) * Math.PI / 180;
+
+      return {
+        x: center + radius * Math.cos(radians),
+        y: center + radius * Math.sin(radians)
+      };
+    }
+
+    function createSlice(startAngle, endAngle, color) {
+      const outerStart = polarToCartesian(startAngle, radius);
+      const outerEnd = polarToCartesian(endAngle, radius);
+
+      const innerStart = polarToCartesian(endAngle, holeRadius);
+      const innerEnd = polarToCartesian(startAngle, holeRadius);
+
+      const largeArcFlag = endAngle - startAngle > 180 ? 1 : 0;
+
+      const path = [
+        `M ${outerStart.x} ${outerStart.y}`,
+        `A ${radius} ${radius} 0 ${largeArcFlag} 1 ${outerEnd.x} ${outerEnd.y}`,
+        `L ${innerStart.x} ${innerStart.y}`,
+        `A ${holeRadius} ${holeRadius} 0 ${largeArcFlag} 0 ${innerEnd.x} ${innerEnd.y}`,
+        "Z"
+      ].join(" ");
+
+      const slice = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "path"
+      );
+
+      slice.setAttribute("d", path);
+      slice.setAttribute("fill", color);
+      slice.classList.add("slice");
+
+      return slice;
+    }
+
+    function drawChart() {
+      let currentAngle = 0;
+
+      data.forEach(item => {
+        const startAngle = currentAngle;
+        const endAngle = currentAngle + item.value * 3.6;
+
+        const slice = createSlice(
+          startAngle,
+          endAngle,
+          item.color
+        );
+
+        doughnut.appendChild(slice);
+
+        item.startAngle = startAngle;
+        item.endAngle = endAngle;
+
+        currentAngle = endAngle;
+      });
+
+      updateChart();
+    }
+
+    function updateChart() {
+      doughnut.setAttribute(
+        "transform",
+        `rotate(${rotation} ${center} ${center})`
+      );
+
+      const selectedSlice = getSliceAtMarker();
+
+      info.innerHTML = `
+        <strong>${selectedSlice.label}</strong>
+        <span>${selectedSlice.value}%</span>
+      `;
+    }
+
+    function getPointerAngle(event) {
+      const point = svg.createSVGPoint();
+
+      point.x = event.clientX;
+      point.y = event.clientY;
+
+      const svgPoint = point.matrixTransform(
+        svg.getScreenCTM().inverse()
+      );
+
+      const x = svgPoint.x - center;
+      const y = svgPoint.y - center;
+
+      let angle = Math.atan2(y, x) * 180 / Math.PI + 90;
+
+      if (angle < 0) {
+        angle += 360;
+      }
+
+      return angle;
+    }
+
+    function getSliceAtMarker() {
+      /*
+        The marker is at 0 degrees.
+
+        Because the chart rotates clockwise, subtract the chart
+        rotation to find the original slice angle.
+      */
+      let angle = (-rotation) % 360;
+
+      if (angle < 0) {
+        angle += 360;
+      }
+
+      return data.find(item => {
+        return angle >= item.startAngle &&
+               angle < item.endAngle;
+      }) || data[0];
+    }
+
+    svg.addEventListener("pointerdown", event => {
+      svg.setPointerCapture(event.pointerId);
+      svg.classList.add("dragging");
+
+      startPointerAngle = getPointerAngle(event);
+      startRotation = rotation;
+    });
+
+    svg.addEventListener("pointermove", event => {
+      if (!svg.hasPointerCapture(event.pointerId)) {
+        return;
+      }
+
+      const currentPointerAngle = getPointerAngle(event);
+      const angleDifference = currentPointerAngle - startPointerAngle;
+
+      rotation = startRotation + angleDifference;
+
+      updateChart();
+    });
+
+    svg.addEventListener("pointerup", event => {
+      svg.releasePointerCapture(event.pointerId);
+      svg.classList.remove("dragging");
+    });
+
+    svg.addEventListener("pointercancel", event => {
+      svg.releasePointerCapture(event.pointerId);
+      svg.classList.remove("dragging");
+    });
+
+    drawChart();
+  </script>
+</body>
+</html>

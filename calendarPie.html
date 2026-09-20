@@ -16,15 +16,36 @@
       <p>free time to do what you want (art)</p>
       <p>free time to nurture your relationships with your loved ones</p>
       <p>
-     (2 and 3 might swap places depending on the time of year or your weekly schedule)
+        (2 and 3 might swap places depending on the time of year or your weekly
+        schedule)
       </p>
     </div>
+    <div class="chart-wrapper">
+      <svg id="chart" viewBox="0 0 400 400" aria-labelledby="chart-title">
+        <title id="chart-title">Interactive doughnut chart</title>
 
+        <!-- The doughnut will be inserted here -->
+        <g id="doughnut"></g>
+
+        <!-- Center hole -->
+        <!-- <circle class="center" cx="200" cy="200" r="82" fill="#f2eee8" /> -->
+
+        <!-- Fixed position marker -->
+        <path
+          class="marker"
+          d="M 200 47 L 192 35 L 208 35 Z"
+          aria-hidden="true"
+        />
+      </svg>
+
+      <div id="info" aria-live="polite"></div>
+    </div>
     <footer>
       <a href="postits.html" class="button">back</a>
       <a href="countdown.html" class="button">what you will?</a>
     </footer>
 
     <script src="typewritter.js"></script>
+    <script src="pieChart.js"></script>
   </body>
 </html>
