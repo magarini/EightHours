@@ -331,6 +331,7 @@ svg {
   top:-25%; */
   margin: 0 -25% 0 0;
   transform: rotate(-90deg);
+  mix-blend-mode: multiply;
 }
 
 svg.dragging {
@@ -367,7 +368,19 @@ svg.dragging {
   color: #666;
 }
 
+.scroll-container {
+height: 100vh;
+  overflow-y: auto;
+}
+
 @media (max-width: 768px) {
+
+  body{
+    height: 100vh;
+    overflow: hidden;
+    margin-bottom: 80px;
+  }
+
   .hidden-board-msg {
     font-size: 2rem;
     max-width: 300px;
@@ -421,7 +434,7 @@ svg.dragging {
     height: auto; */
     width: 100%;
     height: auto;
-    overflow: hidden;
+    /* overflow: hidden; */
   }
 
   svg {

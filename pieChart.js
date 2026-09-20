@@ -1,10 +1,10 @@
 const data = [
-      { label: "FRIENDS", hours: 21.46, value: 12.70, color: "#e76f51" },
-      { label: "EXERCISE", hours: 1.98, value: 1.19, color: "#f4a261" },
-      { label: "LOVERS", hours: 13.92, value: 8.28, color: "#2a9d8f" },
-      { label: "REST", hours: 56.00, value: 33.56, color: "#457b9d" },
-      { label: "SOLITUDE", hours: 34.65, value: 20.63, color: "#8d99ae" },
-      { label: "WORK", hours: 40.00, value: 23.81, color: "#bc6c25" }
+      { label: "FRIENDS", hours: 21.46, value: 12.70, color: "#F66701" },
+      { label: "EXERCISE", hours: 1.98, value: 1.19, color: "#8C96D0" },
+      { label: "LOVERS", hours: 13.92, value: 8.28, color: "#E13F31" },
+      { label: "REST", hours: 56.00, value: 33.56, color: "#32A04D" },
+      { label: "SOLITUDE", hours: 34.65, value: 20.63, color: "#F4B304" },
+      { label: "WORK", hours: 40.00, value: 23.81, color: "#4080E7" }
     ];
 
     const svg = document.querySelector("#chart");
