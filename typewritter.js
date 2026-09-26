@@ -37,6 +37,7 @@
               element.style.display = '';
             });
             document.body.classList.add('text-complete');
+            document.dispatchEvent(new Event('chat-text-complete'));
           }
           return;
         }
