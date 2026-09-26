@@ -37,7 +37,7 @@ body {
 }
 
 .calendarPie {
-  background: url("imgs/calendarPie(1).jpg") no-repeat center center fixed;
+  background: url("imgs/calendarPie(1).jpg") no-repeat center center scroll;
   background-size: cover;
 }
 
@@ -316,9 +316,13 @@ main {
   align-items: center;
   text-align: center;
   position: relative;
-  height: 30vh;
+  /* height: 30vh; */
   width: 100%;
   gap: 16px;
+  position:absolute;
+  top:0;
+  bottom:0;
+  overflow:hidden;
 }
 
 svg {
@@ -334,6 +338,7 @@ svg {
   margin: 0 -25% 0 0;
   transform: rotate(-90deg);
   mix-blend-mode: multiply;
+  height: 100%;
 }
 
 svg.dragging {
@@ -471,11 +476,11 @@ svg.dragging {
 
 @media (max-width: 768px) {
   body {
-    height: 100vh;
-    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
 
-    overflow: hidden;
-    margin-bottom: 80px;
+    /* overflow: hidden; */
+    /* margin-bottom: 80px; */
   }
 
   .hidden-board-msg {
@@ -530,7 +535,8 @@ svg.dragging {
     align-items: flex-start;
     height: auto; */
     width: 100%;
-    height: auto;
+    position: relative;
+    /* height: auto; */
     /* overflow: hidden; */
   }
 
@@ -549,4 +555,11 @@ svg.dragging {
   #info {
     width: 25%;
   }
+
+  .plan-container{
+    min-height: 40vh;
+    display:flex;
+    justify-content:center;
+  }
+
 }

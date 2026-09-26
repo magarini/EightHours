@@ -1,6 +1,6 @@
       const paragraphs = document.querySelectorAll('.chat p');
       const remainingElements = document.querySelectorAll(
-        'body > :not(.chat):not(footer):not(script)'
+        'body > :not(.chat):not(footer):not(script):not(#sketch-holder)'
       );
 
       remainingElements.forEach((element) => {
