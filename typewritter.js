@@ -1,4 +1,11 @@
       const paragraphs = document.querySelectorAll('.chat p');
+      const remainingElements = document.querySelectorAll(
+        'body > :not(.chat):not(footer):not(script)'
+      );
+
+      remainingElements.forEach((element) => {
+        element.style.display = 'none';
+      });
 
       function typeParagraph(paragraph, fullText, onComplete) {
         paragraph.textContent = '';
@@ -18,7 +25,21 @@
       }
 
       function startTyping(index) {
-        if (index >= paragraphs.length) return;
+        if (index >= paragraphs.length) {
+          const allParagraphsVisible = Array.from(paragraphs).every(
+            (paragraph) =>
+              paragraph.classList.contains('visible') &&
+              !paragraph.classList.contains('is-typing')
+          );
+
+          if (allParagraphsVisible) {
+            remainingElements.forEach((element) => {
+              element.style.display = '';
+            });
+            document.body.classList.add('text-complete');
+          }
+          return;
+        }
 
         const paragraph = paragraphs[index];
         const fullText = paragraph.textContent.trim();
