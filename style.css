@@ -4,6 +4,8 @@
   --text-color: #4c4c4c;
   --bubble-color: #e4dae2;
   --button-color: #a1c8e9;
+  --blob-bg: #e4dae263;
+  --blob-border: rgba(223, 182, 182, 0.25);
 }
 
 * {
@@ -43,6 +45,11 @@ body {
 
 .countdown {
   background: url("imgs/counterBG.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.blobAttention {
+  background: url("imgs/blobBG(1).jpg") no-repeat center right fixed;
   background-size: cover;
 }
 
@@ -319,10 +326,10 @@ main {
   /* height: 30vh; */
   width: 100%;
   gap: 16px;
-  position:absolute;
-  top:0;
-  bottom:0;
-  overflow:hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
 }
 
 svg {
@@ -359,11 +366,12 @@ svg.dragging {
 }
 
 #info {
-  margin-top: 1rem;
+  margin: 1rem;
   min-height: 3rem;
   font-size: 2rem;
   z-index: 10;
   mix-blend-mode: multiply;
+  position:absolute;
 }
 
 #info strong {
@@ -553,13 +561,18 @@ svg.dragging {
   }
 
   #info {
-    width: 25%;
+    width: 50%;
+    font-size: 1.2rem;
+    text-align: right;
   }
 
-  .plan-container{
-    min-height: 40vh;
-    display:flex;
-    justify-content:center;
+  #info strong {
+    font-size: 1.5rem;
   }
 
+  .plan-container {
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+  }
 }
