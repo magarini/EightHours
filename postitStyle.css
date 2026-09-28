@@ -163,10 +163,10 @@ h1 em {
   position: relative;
   z-index: 2;
 }
-.note {
+ .note {
     font-family: "Lacquer", system-ui;
   align-items: center;
-  border: 0;
+  border-radius: 0;
   box-shadow: var(--shadow);
   color: var(--ink);
   cursor: pointer;
@@ -348,7 +348,7 @@ h1 em {
   white-space: nowrap;
   width: 1px;
 }
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .app-header {
     align-items: start;
     flex-direction: column;
@@ -364,8 +364,9 @@ h1 em {
   }
   .note {
     font-size: 16px;
-    min-height: 112px;
-    width: 138px;
+    min-height: 96px;
+    width: 96px;
+    height: 96px;
   }
   /* .board {
     padding-bottom: 150px;

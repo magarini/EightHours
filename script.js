@@ -1,13 +1,14 @@
 const TASKS = [
-  "Apply for this",
-  "Meet this person",
-  "Clean up",
-  "Do chores",
-  "Reply to emails",
-  "Buy groceries",
-  "Book the appointment",
-  "Water the plants",
-  "Send that message",
+  "apply for this",
+  "catch up with friends",
+  "clean up",
+  "do freelance work on your free time",
+  "reply to messages",
+  "buy groceries",
+  "book doctor appointment",
+  "water the plants",
+  "eat properly",
+  "find time to do your art",
 ];
 
 const THOUGHTS = [

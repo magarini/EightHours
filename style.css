@@ -147,6 +147,7 @@ button {
   transform: translate(50%, 50%);
   align-self: center;
   z-index: 10;
+  background-color: #f6c2d9;
 }
 
 footer {
@@ -325,7 +326,7 @@ main {
   position: relative;
   /* height: 30vh; */
   width: 100%;
-  gap: 16px;
+  gap: 8px;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -366,12 +367,12 @@ svg.dragging {
 }
 
 #info {
-  margin: 1rem;
+  padding: 0 0 0 16px ;
   min-height: 3rem;
   font-size: 2rem;
   z-index: 10;
   mix-blend-mode: multiply;
-  position:absolute;
+  /* position: absolute; */
 }
 
 #info strong {
@@ -504,6 +505,14 @@ svg.dragging {
     margin: 8px;
   }
 
+  .intro .chat {
+    margin-bottom: 80px;
+  }
+
+  /* .plan-container {
+    padding-bottom: 80px;
+  } */
+
   footer {
     position: absolute;
     padding: 8px;
@@ -531,6 +540,7 @@ svg.dragging {
     bottom: auto;
     right: auto;
     transform: none;
+    background-color: #f6c2d9;
   }
 
   main {
@@ -549,21 +559,19 @@ svg.dragging {
   }
 
   svg {
-    flex: 2;
     margin: 0;
     transform: none;
     width: 200vw;
     /* position: absolute;
     right: -40%; */
-    margin-right: -70%;
+    margin-right: -50%;
     top: 0;
     transform: rotate(-90deg);
   }
 
   #info {
-    width: 50%;
+    /* width: 30%; */
     font-size: 1.2rem;
-    text-align: right;
   }
 
   #info strong {

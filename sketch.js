@@ -83,7 +83,10 @@ function setup() {
   let button = document.getElementById("planButton");
   // button.position(80, 10);
   // button.mousePressed(generateLayout);
-    button.addEventListener("click", generateLayout);;
+  button.addEventListener("click", () => {
+    button.textContent = "make a new plan";
+    generateLayout();
+  });
 
 
   // let clearBtn = createButton("Clear");

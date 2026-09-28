@@ -3,7 +3,7 @@ const data = [
       { label: "EXERCISE", hours: 1.98, value: 1.19, color: "#8C96D0" },
       { label: "LOVERS", hours: 13.92, value: 8.28, color: "#E13F31" },
       { label: "REST", hours: 56.00, value: 33.56, color: "#32A04D" },
-      { label: "SOLITUDE", hours: 34.65, value: 20.63, color: "#F4B304" },
+      { label: "wHAT YOU WILL", hours: 34.65, value: 20.63, color: "#F4B304" },
       { label: "WORK", hours: 40.00, value: 23.81, color: "#4080E7" }
     ];
 
