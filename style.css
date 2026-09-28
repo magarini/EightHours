@@ -322,6 +322,7 @@ main {
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
+  justify-content: center;
   text-align: center;
   position: relative;
   /* height: 30vh; */
@@ -335,7 +336,7 @@ main {
 
 svg {
   /* flex:2; */
-  width: min(80vw, 100vw);
+  width: 100vw;
   display: block;
   cursor: grab;
   touch-action: none;
@@ -343,7 +344,7 @@ svg {
   /* position:absolute;
   right:-25%;
   top:-25%; */
-  margin: 0 -25% 0 0;
+  /* margin: 0 -25% 0 0; */
   transform: rotate(-90deg);
   mix-blend-mode: multiply;
   height: 100%;
@@ -367,7 +368,7 @@ svg.dragging {
 }
 
 #info {
-  padding: 0 0 0 16px ;
+  padding: 0 0 0 16px;
   min-height: 3rem;
   font-size: 2rem;
   z-index: 10;
@@ -583,4 +584,11 @@ svg.dragging {
     display: flex;
     justify-content: center;
   }
+
+  .blob-container{
+    height: min(60vh, 90vh);
+    margin:48px 16px;
+  }
+
+
 }
