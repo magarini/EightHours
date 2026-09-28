@@ -4,8 +4,8 @@
   --text-color: #4c4c4c;
   --bubble-color: #e4dae2;
   --button-color: #a1c8e9;
-  --blob-bg: #e4dae263;
-  --blob-border: rgba(223, 182, 182, 0.25);
+  --blob-bg: #dae4da63;
+  --blob-border: #dae4da88;
 }
 
 * {
@@ -440,8 +440,8 @@ svg.dragging {
 
 .file-item img {
   width: 100%;
-  height: 100px;
-  object-fit: cover;
+  /* height: 100px; */
+  object-fit: contain;
   /* border-radius: 8px; */
   display: block;
   margin-bottom: 8px;
