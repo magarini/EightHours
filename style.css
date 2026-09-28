@@ -398,7 +398,7 @@ svg.dragging {
   background: var(--blob-bg);
   border: 1px solid var(--blob-border);
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  overflow: hidden;
+  /* overflow: hidden; */
   animation: blob-morph 18s ease-in-out infinite;
   box-shadow:
     0 0 40px rgba(255, 255, 255, 0.06),
